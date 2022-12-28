@@ -23,12 +23,11 @@ router.get('/:id', async (req, res) => {
     try {
       const categoryData = await Category.findByPk(req.params.id, {
         // JOIN with products
-        include: {
+        include:
           Product,
           where: {
             category_id: req.params.id
           }
-        }
       });
   
       if (!categoryData) {
